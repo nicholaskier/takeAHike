@@ -14,3 +14,10 @@ class Hike(models.Model):
         return self.name
     def get_absolute_url(self):
         return reverse('detail', kwargs={'hike_id': self.id})
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    hike = models.ForeignKey(Hike, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for hike_id: {self.hike_id} @ {self.url}"
