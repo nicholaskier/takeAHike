@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Hike
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 def home(request):
@@ -18,3 +18,11 @@ def hikes_detail(request, hike_id):
 class HikeCreate(CreateView):
     model = Hike
     fields = ['title', 'summary', 'distance']
+
+class HikeUpdate(UpdateView):
+    model = Hike
+    fields = ['title', 'summary', 'distance']
+
+class HikeDelete(DeleteView):
+    model = Hike
+    success_url = '/hikes/'

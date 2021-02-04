@@ -10,6 +10,10 @@
       <p>Summary: {{ hike.summary }}</p>
       <p>Distance Hiked: {{ hike.distance }} miles</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'hikes_update' hike.id %}">Edit</a>
+        <a href="{% url 'hikes_delete' hike.id %}">Delete</a>
+      </div>
   </div>
 
 
