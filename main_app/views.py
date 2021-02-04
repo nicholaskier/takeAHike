@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Hike
+from django.views.generic.edit import CreateView
 
 
 def home(request):
@@ -13,3 +14,7 @@ def hikes_detail(request, hike_id):
     hike = Hike.objects.get(id=hike_id)
     return render(request, 'hikes/detail.html', {'hike': hike})
 # Create your views here.
+
+class HikeCreate(CreateView):
+    model = Hike
+    fields = ['title', 'summary', 'distance']
