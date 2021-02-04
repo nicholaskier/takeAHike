@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>My Hikes</h1>
 
-{% for hike in hikes %}
+
+
 <div class="card">
-    <a href="{% url 'detail' hike.id %}">
     <div class="card-content">
       <span class="card-title">{{ hike.title }}</span>
+      <p>Summary: {{ hike.summary }}</p>
+      <p>Distance Hiked: {{ hike.distance }} miles</p>
     </div>
-    </a>
-</div>
-{% endfor %}
+  </div>
+
 
 {% endblock %}
