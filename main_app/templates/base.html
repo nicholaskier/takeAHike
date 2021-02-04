@@ -17,8 +17,14 @@
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Take A Hike</a></li>
         </ul>
         <ul class="right">
+        {% if user.is_authenticated %}
           <li><a href="{% url 'index' %}">My Hikes</a></li>
           <li><a href="{% url 'hikes_create' %}">Log a Hike</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
         </ul>
       </div>
     </nav>
