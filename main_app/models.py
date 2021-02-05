@@ -11,9 +11,14 @@ class Hike(models.Model):
     summary = models.CharField(max_length=200)
     distance = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='user_hike')
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
-        return self.name
+        return self.title
+
     def get_absolute_url(self):
         return reverse('detail', kwargs={'hike_id': self.id})
 

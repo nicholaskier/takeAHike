@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Hike, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import uuid
 import boto3
 
@@ -24,7 +26,8 @@ def hikes_index(request):
 @login_required
 def hikes_detail(request, hike_id):
     hike = Hike.objects.get(id=hike_id)
-    return render(request, 'hikes/detail.html', {'hike': hike})
+    total_likes = hike.total_likes()
+    return render(request, 'hikes/detail.html', {'total_likes': total_likes}, {'hike': hike})
 # Create your views here.
 @login_required
 def add_photo(request, hike_id):
@@ -65,6 +68,11 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)    
+
+def LikeView(request, pk):
+    hike = get_object_or_404(Hike, id=request.POST.get('hike_id'))
+    hike.likes.add(request.user)
+    return HttpResponseRedirect(reverse('detail', args=[str(pk)]))
 
 class HikeCreate(LoginRequiredMixin, CreateView):
     model = Hike

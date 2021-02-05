@@ -10,10 +10,15 @@
       <p>Summary: {{ hike.summary }}</p>
       <p>Distance Hiked: {{ hike.distance }} miles</p>
     </div>
-    <div class="card-action">
+    <div class="card-action green lighten-2">
         <a href="{% url 'hikes_update' hike.id %}">Edit</a>
         <a href="{% url 'hikes_delete' hike.id %}">Delete</a>
     </div>
+    <br/><br/>
+    <form action="{% url 'like_hike' hike.pk %}" method="POST">
+      {% csrf_token %}
+      <button type="submit", name="hike_id", value="{{ hike.id }}", class="btn green lighten-2">Like</button> - {{ total_likes }} Likes
+    </form>
       {% for photo in hike.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
     {% empty %}
@@ -23,7 +28,7 @@
         {% csrf_token %}
         <input type="file" name="photo-file">
         <br><br>
-        <input type="submit" class="btn" value="Upload Photo">
+        <input type="submit" class="btn green lighten-2" value="Upload Photo">
     </form>
   </div>
 
