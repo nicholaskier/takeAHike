@@ -15,7 +15,7 @@
         <a href="{% url 'hikes_delete' hike.id %}">Delete</a>
     </div>
     <br/><br/>
-    <form action="{% url 'like_hike' hike.pk %}" method="POST">
+    <form action="{% url 'like_hike' hike.id %}" method="POST">
       {% csrf_token %}
       <button type="submit", name="hike_id", value="{{ hike.id }}", class="btn green lighten-2">Like</button> - {{ total_likes }} Likes
     </form>

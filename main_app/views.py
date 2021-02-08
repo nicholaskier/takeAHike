@@ -27,7 +27,7 @@ def hikes_index(request):
 def hikes_detail(request, hike_id):
     hike = Hike.objects.get(id=hike_id)
     total_likes = hike.total_likes()
-    return render(request, 'hikes/detail.html', {'total_likes': total_likes}, {'hike': hike})
+    return render(request, 'hikes/detail.html', {'total_likes': total_likes, 'hike': hike})
 # Create your views here.
 @login_required
 def add_photo(request, hike_id):
