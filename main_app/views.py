@@ -10,7 +10,8 @@ from django.urls import reverse
 import uuid
 import boto3
 
-# session = boto3.Session(profile_name='hikes')
+session = boto3.Session(profile_name='hikes')
+# remove ^ this everytime you need to push to heroku, pop it back on when you need to develop locally
 S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
 BUCKET = 'takeahike'
 
@@ -27,7 +28,10 @@ def hikes_index(request):
 def hikes_detail(request, hike_id):
     hike = Hike.objects.get(id=hike_id)
     total_likes = hike.total_likes()
-    return render(request, 'hikes/detail.html', {'total_likes': total_likes, 'hike': hike})
+    liked = False
+    if hike.likes.filter(id=request.user.id).exists():
+        liked = True
+    return render(request, 'hikes/detail.html', {'total_likes': total_likes, 'hike': hike, 'liked': liked})
 # Create your views here.
 @login_required
 def add_photo(request, hike_id):
@@ -71,7 +75,13 @@ def signup(request):
 
 def LikeView(request, pk):
     hike = get_object_or_404(Hike, id=request.POST.get('hike_id'))
-    hike.likes.add(request.user)
+    liked = False
+    if hike.likes.filter(id=request.user.id).exists():
+        hike.likes.remove(request.user)
+        liked = False
+    else:
+        hike.likes.add(request.user)
+        liked = True
     return HttpResponseRedirect(reverse('detail', args=[str(pk)]))
 
 class HikeCreate(LoginRequiredMixin, CreateView):

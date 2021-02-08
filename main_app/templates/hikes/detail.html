@@ -17,7 +17,12 @@
     <br/><br/>
     <form action="{% url 'like_hike' hike.id %}" method="POST">
       {% csrf_token %}
-      <button type="submit", name="hike_id", value="{{ hike.id }}", class="btn green lighten-2">Like</button> - {{ total_likes }} Likes
+      {% if liked %}
+      <button type="submit", name="hike_id", value="{{ hike.id }}", class="btn red lighten-2">UnLike</button>
+      {% else %} 
+      <button type="submit", name="hike_id", value="{{ hike.id }}", class="btn green lighten-2">Like</button> 
+      {% endif %}
+      - {{ total_likes }} Likes
     </form>
       {% for photo in hike.photo_set.all %}
       <img class="responsive-img card-panel" src="{{photo.url}}">
