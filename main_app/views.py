@@ -10,7 +10,7 @@ from django.urls import reverse
 import uuid
 import boto3
 
-session = boto3.Session(profile_name='hikes')
+# session = boto3.Session(profile_name='hikes')
 S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
 BUCKET = 'takeahike'
 
