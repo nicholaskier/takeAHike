@@ -8,13 +8,14 @@
 <div class="container white">
   <div class="card white">
     <a href="{% url 'detail' hike.id %}">
-    <div class="card-content">
-      <span class="card-title">{{ hike.title }}</span>
-    </div>
+      <div class="card-content">
+        <span class="card-title">{{ hike.title }}</span>
+      </div>
     </a>
-</div>
+  </div>
 </div>
 {% endfor %}
+<a href="{% url 'hikes_create' %}">Add a hike</a>
 </div>
 
 {% endblock %}
