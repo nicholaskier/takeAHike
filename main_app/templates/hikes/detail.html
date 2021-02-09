@@ -11,8 +11,8 @@
       <p>Distance Hiked: {{ hike.distance }} miles</p>
     </div>
     <div class="card-action green lighten-2">
-        <a href="{% url 'hikes_update' hike.id %}">Edit</a>
-        <a href="{% url 'hikes_delete' hike.id %}">Delete</a>
+        <a class="btn white black-text" href="{% url 'hikes_update' hike.id %}">Edit</a>
+        <a class="btn white black-text" href="{% url 'hikes_delete' hike.id %}">Delete</a>
     </div>
     <br/><br/>
     <form action="{% url 'like_hike' hike.id %}" method="POST">
