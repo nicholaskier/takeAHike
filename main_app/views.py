@@ -10,7 +10,7 @@ from django.urls import reverse
 import uuid
 import boto3
 
-session = boto3.Session(profile_name='hikes')
+# session = boto3.Session(profile_name='hikes')
 # remove ^ this everytime you need to push to heroku, pop it back on when you need to develop locally
 S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
 BUCKET = 'takeahike'
