@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="container white">
 <h1>Log In</h1>
 
 <form method="post" action="{% url 'login' %}">
@@ -9,5 +10,6 @@
     <input type="submit" class="btn green lighten-2" value="login">
     <input type="hidden" name="next" value="{{ next }}">
 </form>
+</div>
 
 {% endblock %}

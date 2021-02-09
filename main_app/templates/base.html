@@ -18,12 +18,13 @@
         <ul>
           <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Take A Hike</a></li>
           <!-- <li><i class="fas fa-hiking"></li> -->
-        </ul>
-        <ul class="right">
+          </ul>
+          <ul class="right">
+            <img class ="logo" src="{% static 'images/noun_Hiker_1663297.svg' %}" height="50" width="50" >
         {% if user.is_authenticated %}
-          <li><a href="{% url 'index' %}">My Hikes</a></li>
-          <li><a href="{% url 'hikes_create' %}">Log a Hike</a></li>
-          <li><a href="{% url 'logout' %}">Log Out</a></li>
+            <li><a href="{% url 'index' %}">My Hikes</a></li>
+            <li><a href="{% url 'hikes_create' %}">Log a Hike</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
         {% else %}
           <li><a href="{% url 'login' %}">Log In</a></li>
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
