@@ -11,11 +11,11 @@ Enjoy your stroll through Take a Hike. Log your journeys and share photos of you
 ![Detail](main_app/static/images/detailHike.png)
 ![Index](main_app/static/images/indexHike.png)
 
-## Trell Planning
+## Trello Planning
 
 [Trello](https://trello.com/b/G8qhmmrh/take-a-hike)
 
-Take a look at my Trello board for Take a Hike for wireframes and workflow!
+Take a look at my Trello board for Take a Hike wireframes and workflow!
 
 ## Icebox Features
 
@@ -24,7 +24,7 @@ Take a look at my Trello board for Take a Hike for wireframes and workflow!
 
 ## Challenge and Takeaways
 
-Being my first app that I have built in Python and Django, things could have gone much worse! There are a lot of syntax differences that we tough to wrap my head around, but I'm excited to build profeciency in Python so that I can take a deeper dive into fun ideas for functionality.
+Being my first app that I have built in Python and Django, things could have gone much worse! There are a lot of syntax differences that were tough to wrap my head around, but I'm excited to build profeciency in Python so that I can take a deeper dive into fun ideas for functionality.
 
 ## Attributions and Special Thanks
 
